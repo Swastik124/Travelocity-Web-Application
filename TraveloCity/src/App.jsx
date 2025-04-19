@@ -7,6 +7,7 @@ import DestinationDetails from './components/DestinationDetails'
 import PerfectTrip from './components/PerfectTrip';
 // import Navbar from './components/Navbar'
 
+
 function App() {
   return (
         <div>
