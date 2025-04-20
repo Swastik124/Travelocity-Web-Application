@@ -124,3 +124,11 @@ hr{
   height: 2.5rem;
   width: 2.5rem;
 }
+
+@media (max-width: 768px) {
+  .signInContainer input[type="text"], 
+  .signInContainer input[type="password"],
+  #submitBtn {
+      width: 90%;
+  }
+}

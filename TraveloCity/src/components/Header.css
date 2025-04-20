@@ -1,59 +1,102 @@
-.Header{
-    height: 80px;
-    width: 100%;
-}
-ul>a{
-    color:black;
-}
-ul>a:hover{
-    color: black;
-    text-decoration: none;
-}
-.sub-header{
-    background-color: #0b428b;
+.homeContainer header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 80px;
-}
-.sub-header1{
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    background-color: #0b428b;
-    margin-left: 10%;
-    width: 100%;
-}
-.sub-header2{
-    display: flex;
-    justify-content: flex-start;
-    align-items: flex-end;
-    gap: 7px;
-    margin-right: 5%;
-    width:100%;
-}
-.sub-header1 > img{
-    height: 60px;
-}
-.sub-header2 > Button{
-    height: 25px;
+    background: #0a2c5c;
+    color: #fff;
+    padding: 0 32px;
+    height: 64px;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    box-shadow: 0 1px 0 #e0e0e0;
 }
 
-#Shoptravel{
-    height: 15rem; 
-    background-color: #0b428b;
-    color: white;
+.header-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
-#BB:hover{
-    background-color: #0b428b;
+
+.logo-text {
+    font-size: 20px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    display: flex;
+    align-items: center;
 }
-#Shoptravel:hover{
-    background-color:#0b428b;
+
+.star {
+    color: #4bb3fd;
+    font-size: 18px;
+    margin-right: 6px;
 }
-.sub-header2> #GettheApp{
-    padding: 2.5%;
-    width: 21%;
-    background-color: rgb(250, 250, 250);
-    color: black;
-    border: 1px solid black;
+
+.powered {
+    font-size: 10px;
+    color: #b0cdfc;
+    margin-left: 2px;
+    margin-top: -2px;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+
+.app-btn {
+    background: #fff;
+    color: #0a2c5c;
+    border: none;
+    border-radius: 22px;
+    padding: 6px 18px;
+    font-weight: 500;
+    font-size: 15px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.app-btn:hover {
+    background: #e6f0fa;
+}
+
+.lang-select {
+    background: none;
+    color: #fff;
+    border: none;
+    font-size: 15px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+.header-link {
+    font-size: 15px;
+    cursor: pointer;
+    color: #fff;
+    text-decoration: none;
+    background: none;
+    border: none;
+    padding: 0;
+    transition: color 0.2s;
+}
+
+.header-link:hover {
+    color: #4bb3fd;
+}
+
+.sign-btn {
+    font-weight: 600;
+    padding: 6px 18px;
+    border-radius: 20px;
+    border: 1px solid #4bb3fd;
+    background: #4bb3fd;
+    color: #fff;
+    margin-left: 8px;
+    transition: background 0.2s, color 0.2s;
+}
+
+.sign-btn:hover {
+    background: #fff;
+    color: #0a2c5c;
+    border: 1px solid #0a2c5c;
 }

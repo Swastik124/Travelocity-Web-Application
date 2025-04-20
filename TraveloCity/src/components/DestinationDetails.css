@@ -202,48 +202,17 @@
   }
   /* Media Queries */
   
-  @media (max-width: 768px) {
-    .topdiv {
-      max-width: 100%;
+@media (max-width: 768px) {
+    .topdiv, .sidebar, .mapStyle, .compareStyle, .topStyle {
+        max-width: 100%;
     }
-    .sidebar {
-      max-width: 100%;
-    }
-    .css-1t1xvy7 {
-      max-width: 100%;
-    }
-    .mapStyle {
-      /* max-width: 190%; */
-      border: 2px solid grey;
-    }
-    .compareStyle {
-      max-width: 100%;
-    }
-    .topStyle {
-      max-width: 100%;
-    }
-  }
-  
-  @media (max-width: 480px) {
-    .searchStyle {
-      flex-direction: column;
-      gap: 10px;
-    }
-    .starButtonStyle {
-      width: 100%;
-    }
-    .hotelCard {
-      flex-direction: column;
+}
+@media (max-width: 480px) {
+    .searchStyle, .hotelCard {
+        flex-direction: column;
     }
     .ImgSt {
-      width: 100%;
-      height: auto;
+        width: 100%;
+        height: auto;
     }
-    .BoxSt {
-      width: 100%;
-    }
-    .sidebar {
-      display: none;
-    }
-  }
-  
+}

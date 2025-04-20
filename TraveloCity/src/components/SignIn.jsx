@@ -11,33 +11,42 @@ export const SignIn = () => {
     const [error, setError] = useState(null);
     const [keepSignedIn, setKeepSignedIn] = useState(false);
     let count=0;
+    
     const handleSubmit = (e) => {
-        e.preventDefault();
-        if(ValidityState()){
-            fetch("http://localhost:3000/userData/").then((res)=>{
-                // const =res.json();
-                return res.json();
-            }).then((resp)=>{  
-                    let userfound=0;
-                    for (let i=0;i<resp.length;i++)
-                    {
-                        if (resp[i].email === userEmail && resp[i].password === userpassword) {
-                            window.location.href = "/SignIn";
-                            localStorage.setItem('firstname', resp[i].firstName);
-                            localStorage.setItem('count', (++count));
-                            userfound=1;
-                            
-                        }}
-                       if (userfound==1){
-                        window.alert('login successfull')
-                        window.location.href = "/Home";
-                       }else{
-                        window.alert('user not found')
-                       }
-                    })
-                  }
-                }
-
+      e.preventDefault();
+      if (!validateForm()) return;
+  
+      fetch("http://localhost:3000/userData/")
+        .then((res) => res.json())
+        .then((resp) => {
+          const user = resp.find(
+            (u) => u.email === userEmail && u.password === userpassword
+          );
+          if (user) {
+            localStorage.setItem('firstname', user.firstName);
+            window.alert('Login successful');
+            window.location.href = "/Home";
+          } else {
+            window.alert('User not found');
+          }
+        })
+        .catch(() => {
+          window.alert('Error connecting to server');
+        });
+  };
+  
+  const validateForm = () => {
+      if (!userEmail) {
+        window.alert('Please enter User email');
+        return false;
+      }
+      if (!userpassword) {
+        window.alert('Please enter password');
+        return false;
+      }
+      return true;
+  };
+  
 
     const ValidityState = () => {
         let result=true;
@@ -70,7 +79,7 @@ export const SignIn = () => {
     
           <div className='signInBody' style={{fontFamily:'-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, sans-serif', fontWeight:'400'}}>
             <h1 ><b>Sign in</b></h1>
-
+            {/* ASCII value for space is 32 */}
             <form onSubmit={handleSubmit}>
             <label >
                 <input
@@ -93,7 +102,7 @@ export const SignIn = () => {
               </label>
               <div style={{ display: 'flex', alignItems: 'center' }}>
                 <input type="checkbox" checked={keepSignedIn} onChange={handleCheckboxChange} />
-                <label>Keep me signed in</label>
+                <label style={{ marginLeft: '8px' }}>Keep me signed in</label>
               </div>
               <p id="keepSignedInMessage" style={{ display: keepSignedIn ? 'block' : 'none' }}>Selecting this checkbox will keep you signed into your account on this device until you sign out. Do not select this on shared devices.</p><br/>
               {error && <p style={{ color: 'red' }}>{error}</p>}
