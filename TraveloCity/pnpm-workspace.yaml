@@ -1,0 +1,5 @@
+ignoredBuiltDependencies:
+  - styled-components
+
+onlyBuiltDependencies:
+  - esbuild

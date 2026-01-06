@@ -1,4 +1,5 @@
-import Carousel from 'better-react-carousel';
+import Carousel from "react-multi-carousel";
+import "react-multi-carousel/lib/styles.css";
 import { useState, useEffect } from 'react';
 import './Home.css';
 import {
@@ -66,47 +67,31 @@ function Home() {
         }}>Recommended stays for you</h2>
 
         <div>
-          <Carousel responsive={responsive} cols={4} rows={1} gap={10} loop>
+          <Carousel responsive={responsive} infinite arrows>
             {hotels.map((hotel) => (
-              <Carousel.Item key={hotel.id}>
-                <div className="hotel-card" style={{
-                  objectFit: 'cover',
-                  height: '90%',
-                  display: 'flex',
-                  flex: '1',
-                  flexDirection: 'column',
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                  margin: '0.2rem',
-                  boxShadow: 'rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px',
-                  borderRadius:'5%',
-                  overflow: 'visible',
+              <div key={hotel.id} className="hotel-card" style={{
+                objectFit: "cover",
+                height: "90%",
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "center",
+                alignItems: "center",
+                margin: "0.2rem",
+                boxShadow: "rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px",
+                borderRadius: "5%",
+                overflow: "hidden"
+              }}>
+                <img onClick={detail} src={hotel.image[0].image} alt={hotel.name}
+                  style={{ width: "100%", height: "8rem", objectFit: "cover" }} />
 
-                }}>
-                  <img onClick={detail} src={hotel.image[0].image} alt={hotel.name} style={{
-                    width: '100%',
-                    height: '8rem',
-                    objectFit: 'cover',
-                    
-                  }} />
+                <h3 onClick={detail} style={{ fontSize: "1.2rem", margin: "0.5rem 0" }}>
+                  {hotel.name}
+                </h3>
 
-                  <h3 onClick={detail} style={{
-                    fontSize: '1.2rem',
-                    // fontWeight: 'bold',
-                    margin: '0.5rem 0'
-                  }}>{hotel.name}</h3>
-                  <span style={{
-                    paddingLeft: '1%',
-                    paddingBottom: '1%',
-                    fontSize: 'small',
-                    display: 'inline-block',
-                    margin: '0.5rem 0',
-                    marginRight: '60%',
-                    fontWeight: 'bold'
-                  }}>
-                    {hotel.rating}/5 ,({hotel.reviews})</span>
-                </div>
-              </Carousel.Item>
+                <span style={{ fontSize: "small", fontWeight: "bold" }}>
+                  {hotel.rating}/5 ({hotel.reviews})
+                </span>
+              </div>
             ))}
           </Carousel>
         </div>
@@ -120,41 +105,29 @@ function Home() {
         }}>Explore stays in trending destinations</h2>
 
         <div>
-          <Carousel responsive={responsive} cols={4} rows={1} gap={10} marginBottom='2%' loop>
-            {hotels.map((hotel) => (
-              <Carousel.Item key={hotel.id}>
-                <div className="hotel-card" style={{
+          <Carousel responsive={responsive} infinite arrows>
+          {hotels.map((hotel) => (
+            <div key={hotel.id} className="hotel-card" style={{
+              height: "90%",
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "center",
+              alignItems: "center",
+              margin: "0.2rem",
+              boxShadow: "rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px",
+              borderRadius: "5%",
+              overflow: "hidden"
+            }}>
+              <img onClick={detail} src={hotel.location.img} alt={hotel.location.city}
+                style={{ width: "100%", height: "9rem", objectFit: "cover" }} />
 
-                  height: '90%',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                  margin: '0.2rem',
-                  boxShadow: 'rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px',
-                  borderRadius:'5%',
-                  overflow: 'visible',
-                }}>
-                  <img onClick={detail} src={hotel.location.img} alt={hotel.location.city} style={{
-                    width: '100%',
-                    height: '9rem',
-                    objectFit: 'cover',
-                   
-                  }} />
+              <h2 onClick={detail} style={{ fontSize: "1.2rem", margin: "0.5rem 0" }}>
+                {hotel.location.city}
+              </h2>
 
-                  <h2 onClick={detail} style={{
-                    fontSize: '1.2rem',
-                    margin: '0.5rem 0'
-                  }}>{hotel.location.city}</h2>
-                  <p style={{
-                    fontSize: '1rem',
-                    margin: '0.5rem 0',
-                    padding:'0',
-                    marginTop:'0',
-                  }}>{hotel.location.country}</p>
-                </div>
-              </Carousel.Item>
-            ))}
+              <p style={{ fontSize: "1rem" }}>{hotel.location.country}</p>
+            </div>
+          ))}
           </Carousel>
         </div>
 
